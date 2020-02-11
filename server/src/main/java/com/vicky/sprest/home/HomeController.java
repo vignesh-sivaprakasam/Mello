@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String home(Map<String, Object> model) {
 		System.out.println("Home hit");
 		model.put("msg", "Hello");
-		return "home";
+		return "/WEB-INF/jsp/home.jsp";
 	}
 }

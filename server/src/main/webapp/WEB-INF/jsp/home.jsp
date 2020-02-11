@@ -3,8 +3,10 @@
                 <title>
                         Meister Task
                 </title>
+                <link rel="stylesheet" href="/css/Common.css">
+                <link rel="stylesheet" href="/css/Kanban.css">
         </head>
         <body>
-                Welcome Home
+                <%@ include file="../html/TopBar.html" %>
         </body>
 </html>
