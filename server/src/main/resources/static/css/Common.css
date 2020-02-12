@@ -1,6 +1,10 @@
 :root{
         --primary_color:#00aaff;
 }
+body{
+        margin: 0;
+        height: 100vh;
+}
 div:focus{
         outline: none;
 }
@@ -25,6 +29,14 @@ div:focus{
 }
 .flex{
         display: flex;
+}
+
+.flex1{
+        flex: 1;
+}
+
+.flex_column{
+        flex-direction: column;
 }
 
 .pointer_cursor{
