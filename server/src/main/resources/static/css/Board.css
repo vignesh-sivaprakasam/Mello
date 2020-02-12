@@ -1,0 +1,23 @@
+.board{
+        display: flex;
+        height: 95%;
+}
+.boardContainer{
+        display             : flex;
+        background-color    : #d9dcdd;
+        flex                : 1;
+}
+.boardContainer > * {
+        padding: 20px;
+}
+.addStackContainer {
+        
+}
+.addStack{
+        border-radius   : 20px;
+        background      : white;
+        padding         : 15px;
+        cursor          : pointer;
+        color           : var(--primary_color);
+        font-weight     : 500;
+}

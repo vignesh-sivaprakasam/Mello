@@ -1,0 +1,52 @@
+:root{
+        --primary_color:#00aaff;
+}
+body{
+        margin: 0;
+        height: 100vh;
+}
+div:focus{
+        outline: none;
+}
+.wid100{
+        width: 100%;
+}
+.hgt100{
+        height: 100%;
+}
+.pos_abs{
+        position: absolute;
+}
+.center_abs{
+        position: absolute;
+        top         : 50%;
+        left        : 50%;
+        transform   : translate(-50%, -50%);        
+}
+
+.center_margin{
+        margin: 0 auto;
+}
+.flex{
+        display: flex;
+}
+
+.flex1{
+        flex: 1;
+}
+
+.flex_column{
+        flex-direction: column;
+}
+
+.pointer_cursor{
+        cursor: pointer;
+}
+
+.circle{
+        position        : relative;
+        background      : white;
+        width           : 30px;
+        height          : 30px;
+        border-radius   : 100%;
+}
