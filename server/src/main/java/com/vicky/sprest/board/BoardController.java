@@ -40,4 +40,9 @@ public class BoardController {
 	public void updateBoard(@RequestBody Board board, @PathVariable("id") long id) {
 		boardService.updateBoard(id, board);
 	}
+	
+	@RequestMapping(method=RequestMethod.PATCH, value="/boards/{id}/name")
+	public void updateBoard1(@RequestBody Board board, @PathVariable("id") long id) {
+		boardService.updateName(id, board);
+	}
 }

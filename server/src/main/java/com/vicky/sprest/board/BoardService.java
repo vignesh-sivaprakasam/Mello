@@ -36,4 +36,8 @@ public class BoardService {
 	public void deleteBoard(long id) {
 		boardRepo.deleteById(id);
 	}
+	
+	public void updateName(long id, Board board) {
+		boardRepo.updateName(board.getName());
+	}
 }
