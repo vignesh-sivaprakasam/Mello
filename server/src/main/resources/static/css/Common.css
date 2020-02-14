@@ -39,7 +39,7 @@ div:focus{
         flex-direction: column;
 }
 
-.pointer_cursor{
+.cursor_pointer{
         cursor: pointer;
 }
 
@@ -49,4 +49,8 @@ div:focus{
         width           : 30px;
         height          : 30px;
         border-radius   : 100%;
+}
+
+.text_center{
+        text-align: center;
 }
