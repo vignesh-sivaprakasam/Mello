@@ -13,6 +13,14 @@
                                 });
                         });
                 },
+                getBoard(id){
+                        return new Promise((resolve, reject)=>{
+                                axios.get(boardUrl+"/"+id).then(response => {
+                                        console.log("Get Board response : ", response);
+                                        resolve(response.data);
+                                });
+                        });
+                },
                 createBoard(board){
                         return new Promise((resolve, reject)=>{
                                 axios.post(boardUrl, board).then((response)=>{

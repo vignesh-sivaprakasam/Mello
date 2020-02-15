@@ -20,6 +20,8 @@
                 <script src="js/Board/BoardEditDialog.js"></script>
                 <script src="js/Board/CreateBoardDialog.js"></script>
 
+                <script src="js/Board/BoardModel.js"></script>
+
         </head>
         <body class="flex flex_column">
                 <%@ include file="../html/TopBar.html" %>
