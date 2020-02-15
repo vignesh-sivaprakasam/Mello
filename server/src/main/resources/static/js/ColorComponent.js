@@ -38,6 +38,10 @@
                         return this.dom;
                 }
 
+                getActive(){
+                        return colors[this.active];
+                }
+
                 setActive(color){
                         let index = colors.indexOf(color);
                         let prevActive = this.colorsDom[this.active];

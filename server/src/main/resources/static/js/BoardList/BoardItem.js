@@ -16,7 +16,8 @@
                 });
                 
                 boardItem.boardDelete.addEventListener("click", (ev) => {
-                        console.log("delete Click");
+                        boardItem.remove();
+                        App.Board.deleteBoard(board.id);
                         ev.stopPropagation();
                 });
         }
@@ -33,6 +34,10 @@
 
                 getDom(){
                         return this.div;
+                }
+
+                remove(){
+                        this.div.remove();
                 }
         }
 

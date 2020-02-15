@@ -18,6 +18,7 @@
                 <script src="js/BoardList/BoardItem.js"></script>
                 <%-- <script src="js/Board/Board.js"></script> --%>
                 <script src="js/Board/BoardEditDialog.js"></script>
+                <script src="js/Board/CreateBoardDialog.js"></script>
 
         </head>
         <body class="flex flex_column">

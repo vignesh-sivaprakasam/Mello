@@ -23,6 +23,10 @@
                         let div = createItem(board);
                         divC.appendChild(div);
                 });
+                const createBoard = fragment.querySelector(".create_board");
+                createBoard.addEventListener("click", ()=>{
+                        openBoardCreateDialog();
+                });
                 return listContainer;
         }
 
