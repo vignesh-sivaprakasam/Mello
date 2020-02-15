@@ -7,7 +7,10 @@
                 <link rel="stylesheet" href="/css/Kanban.css">
                 <link rel="stylesheet" href="/css/Board.css">
                 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
                 <script src="js/GetTemplate.js"></script>
+                <script src="js/ColorComponent.js"></script>
+
                 <script src="js/Request/BoardRequest.js"></script>
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
@@ -22,6 +25,7 @@
                 <%@ include file="../html/MiddleBar.html" %>
                 <%@ include file="../html/BoardList.html" %>
                 <%@ include file="../html/Board/BoardEdit.html" %>
+                <%@ include file="../html/ColorComponent.html" %>
                 <script src="/js/BoardList/BoardListingDialog.js"></script>
                 <script src="/js/init.js"></script>
         </body>
