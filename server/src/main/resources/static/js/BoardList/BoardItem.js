@@ -11,6 +11,7 @@
                 
                 boardItem.edit.addEventListener("click", (ev) => {
                         console.log("edit Click");
+                        openBoardEditDialog(board);
                         ev.stopPropagation();
                 });
                 
