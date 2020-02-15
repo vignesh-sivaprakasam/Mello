@@ -49,6 +49,11 @@
         box-shadow    : 0px 0px 7px 1px #949494;
 }
 
+.board_item > * {
+        padding-left    : 10px;
+        padding-right   : 10px;
+}
+
 .create_board{
         color: var(--primary_color);
 }

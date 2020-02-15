@@ -11,12 +11,15 @@
                 <script src="js/Request/BoardRequest.js"></script>
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
+
+                <script src="js/BoardList/BoardItem.js"></script>
+
         </head>
         <body class="flex flex_column">
                 <%@ include file="../html/TopBar.html" %>
                 <%@ include file="../html/MiddleBar.html" %>
                 <%@ include file="../html/BoardList.html" %>
-                <script src="/js/BoardListingDialog.js"></script>
+                <script src="/js/BoardList/BoardListingDialog.js"></script>
                 <script src="/js/init.js"></script>
         </body>
 </html>
