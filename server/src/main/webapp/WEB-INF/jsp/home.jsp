@@ -11,14 +11,19 @@
                 <script src="js/GetTemplate.js"></script>
                 <script src="js/ColorComponent.js"></script>
 
+                <%@ include file="./State.jspf" %>
+
                 <script src="js/Request/BoardRequest.js"></script>
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
 
                 <script src="js/BoardList/BoardItem.js"></script>
-                <%-- <script src="js/Board/Board.js"></script> --%>
+                <!-- <script src="js/Board/Board.js"></script> -->
                 <script src="js/Board/BoardEditDialog.js"></script>
                 <script src="js/Board/CreateBoardDialog.js"></script>
+
+                <script src="js/Board/BoardModel.js"></script>
+                <script src="js/Board/BoardView.js"></script>
 
         </head>
         <body class="flex flex_column">
@@ -26,6 +31,7 @@
                 <%@ include file="../html/MiddleBar.html" %>
                 <%@ include file="../html/BoardList.html" %>
                 <%@ include file="../html/Board/BoardEdit.html" %>
+                <%@ include file="../html/Board/BoardView.html" %>
                 <%@ include file="../html/ColorComponent.html" %>
                 <script src="/js/BoardList/BoardListingDialog.js"></script>
                 <script src="/js/init.js"></script>

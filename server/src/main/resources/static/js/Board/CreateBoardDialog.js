@@ -14,25 +14,21 @@
         function createDialog(dialog) {
                 let fragment        = App.Utility.getTemplate(editDialogTemplate);
                 const name          = fragment.querySelector(".board_name_value");
-                // name.textContent    = board.name;
                 
                 const color         = fragment.querySelector(".board_color_value");
 
                 let colorComp       = new Classes.ColorComponent();
-                // colorComp.setActive(board.color);
                 color.appendChild(colorComp.getDom());
 
-                const save = fragment.querySelector(".save");
-                save.textContent = "Create";
+                const save          = fragment.querySelector(".save");
+                save.textContent    = "Create";
                 save.addEventListener("click", ()=>{
-                        console.log("Request : :");
                         let boardValue    = {};
                         boardValue.name   = name.textContent;
                         boardValue.color  = colorComp.getActive();
                         App.Board.createBoard(boardValue).then(response => {
                                 dialog.remove();
                         });
-                        // App.Board.updateBoard(board.id, boardValue);
                 });
 
                 const cancel = fragment.querySelector(".cancel");

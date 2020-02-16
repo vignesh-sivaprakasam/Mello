@@ -7,6 +7,7 @@
         function addListener(boardItem, board) {
                 boardItem.div.addEventListener("click", (ev) => {
                         console.log("clicked");
+                        boardItem.clickCallback(board.id);
                 });
                 
                 boardItem.edit.addEventListener("click", (ev) => {
@@ -34,6 +35,10 @@
 
                 getDom(){
                         return this.div;
+                }
+
+                bindClickCallback(callback){
+                        this.clickCallback = callback;
                 }
 
                 remove(){
