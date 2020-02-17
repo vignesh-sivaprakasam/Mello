@@ -12,6 +12,9 @@ const boardName = document.querySelector(".boardName");
 
 App.View = {};
 var View = App.View;
+App.View.getBoard = (id) => {
+        return App.View[id];
+}
 App.Data = {};
 var Data = App.Data;
 App.Data.getBoard = (id) =>{
@@ -26,4 +29,24 @@ function parseBoardResponse(boardDetails) {
         let boardView         = View[boardDetails.id];
         let boardData         = Data[boardDetails.id];
         boardContainer.appendChild(boardView.getDom());
+
+        const stacks = boardDetails.stacks;
+        stacks.forEach((stack)=>{
+                parseStackResponse(boardDetails.id, stack);
+        });
+}
+
+function parseStackResponse(boardID, stack) {
+        console.log("boardID : ", boardID, " stack :", stack);
+        let boardModel = App.Data.getBoard(boardID);
+        let stackModel = new Classes.Stack.Model(stack.id, stack.name, stack.color);
+        boardModel.addStack(stack.id, stack);
+
+        let boardView = App.View.getBoard(boardID);
+        let stackView = new Classes.Stack.View();
+        stackView.setName(stackModel.getName());
+        stackView.setColor(stackModel.getColor());
+        
+        boardView.addStack(stack.id, stackView);
+
 }

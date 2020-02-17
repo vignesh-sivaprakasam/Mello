@@ -13,11 +13,26 @@
                 constructor(){
                         this.dom            = createView();
                         this.stackHolder    = this.dom.querySelector(".stackHolder");
-                        this.addStack       = this.dom.querySelector(".addStack");
+                        this.addStackDom    = this.dom.querySelector(".addStack");
+                        this.stacks         = new Map();
                 }
 
                 getDom(){
                         return this.dom;
+                }
+
+                getStackHolder(){
+                        return this.stackHolder;
+                }
+
+                addStack(stackID, stackView){
+                        this.stacks.set(stackID, stackView);
+                        this.stackHolder.appendChild(stackView.getDom());
+                }
+                deleteStack(stackID){
+                        let stackView = this.stacks.get(stackID);
+                        stackView.remove();
+                        this.stacks.delete(id);
                 }
         }
 
