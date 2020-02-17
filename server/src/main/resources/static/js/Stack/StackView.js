@@ -15,7 +15,6 @@
                         this.stackHeader    = this.dom.querySelector(".stack_header");
                         this.stackName      = this.dom.querySelector(".stack_name");
                         this.stackMenu      = this.dom.querySelector(".stack_menu");
-
                         this.addCardDom     = this.dom.querySelector(".createCard");
                 }
                 getDom(){
