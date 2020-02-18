@@ -43,7 +43,7 @@ function parseStackResponse(boardID, stack) {
         boardModel.addStack(stack.id, stack);
 
         let boardView = App.View.getBoard(boardID);
-        let stackView = new Classes.Stack.View();
+        let stackView = new Classes.Stack.View(stackModel);
         stackView.setName(stackModel.getName());
         stackView.setColor(stackModel.getColor());
         
