@@ -47,7 +47,9 @@ public class StackController {
 	}
 	
 	@PutMapping("/stacks/{stackID}")
-	public void updateStack(@PathVariable("stackID") long stackID, @RequestBody Stack stack) {
+	public void updateStack(@PathVariable("boardID") long boardID, @PathVariable("stackID") long stackID, @RequestBody Stack stack) {
+		System.out.println(" stack : "+ stackID+"boardID : "+boardID);
+		stack.setBoard(new Board(boardID, "", ""));
 		stack.setId(stackID);
 		stackService.updateStack(stack);
 	}

@@ -7,6 +7,7 @@
                 <link rel="stylesheet" href="/css/Kanban.css">
                 <link rel="stylesheet" href="/css/Board.css">
                 <link rel="stylesheet" href="/css/Stack.css">
+                <link rel="stylesheet" href="/css/Menu.css">
                 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
                 <script src="js/GetTemplate.js"></script>
@@ -15,6 +16,7 @@
                 <%@ include file="./State.jspf" %>
 
                 <script src="js/Request/BoardRequest.js"></script>
+                <script src="js/Request/StackRequest.js"></script>
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
 
@@ -36,6 +38,7 @@
                 <%@ include file="../html/BoardList.html" %>
                 <%@ include file="../html/Board/BoardEdit.html" %>
                 <%@ include file="../html/Board/BoardView.html" %>
+                <%@ include file="../html/Stack/StackViewDropDown.html" %>
                 <%@ include file="../html/Stack/StackView.html" %>
                 <%@ include file="../html/ColorComponent.html" %>
                 <script src="/js/BoardList/BoardListingDialog.js"></script>
