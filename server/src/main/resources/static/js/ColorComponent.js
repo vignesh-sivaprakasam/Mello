@@ -32,6 +32,7 @@
                         this.colorsDom = createColorItems(this);
                         this.dom = createColorComponent(this.colorsDom);
                         this.active = 0;
+                        this.setActive(colors[0]);
                 }
 
                 getDom(){

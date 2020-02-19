@@ -38,6 +38,7 @@
                 <%@ include file="../html/BoardList.html" %>
                 <%@ include file="../html/Board/BoardEdit.html" %>
                 <%@ include file="../html/Board/BoardView.html" %>
+                <%@ include file="../html/Stack/StackEdit.html" %>
                 <%@ include file="../html/Stack/StackViewDropDown.html" %>
                 <%@ include file="../html/Stack/StackView.html" %>
                 <%@ include file="../html/ColorComponent.html" %>
