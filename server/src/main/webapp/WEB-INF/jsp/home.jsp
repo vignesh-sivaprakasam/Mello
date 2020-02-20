@@ -17,6 +17,7 @@
 
                 <script src="js/Request/BoardRequest.js"></script>
                 <script src="js/Request/StackRequest.js"></script>
+                <script src="js/Request/CardRequest.js"></script>
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
 
@@ -31,7 +32,7 @@
                 <script src="js/Stack/StackDialog.js"></script>
                 <script src="js/Stack/StackView.js"></script>
                 <script src="js/Stack/StackModel.js"></script>
-                
+
         </head>
         <body class="flex flex_column">
                 <%@ include file="../html/TopBar.html" %>
