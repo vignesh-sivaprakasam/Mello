@@ -18,6 +18,9 @@
         padding   : 10px;
         color     : white;
 }
+.stack_footer {
+        padding: 10px;
+}
 .card_holder {
         flex: 1;
 }

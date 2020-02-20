@@ -28,9 +28,10 @@
                 <script src="js/Board/BoardModel.js"></script>
                 <script src="js/Board/BoardView.js"></script>
 
+                <script src="js/Stack/StackDialog.js"></script>
                 <script src="js/Stack/StackView.js"></script>
                 <script src="js/Stack/StackModel.js"></script>
-
+                
         </head>
         <body class="flex flex_column">
                 <%@ include file="../html/TopBar.html" %>
