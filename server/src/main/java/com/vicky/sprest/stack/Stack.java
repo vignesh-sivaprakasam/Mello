@@ -1,14 +1,19 @@
 package com.vicky.sprest.stack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vicky.sprest.board.Board;
+import com.vicky.sprest.card.Card;
 
 @Entity
 public class Stack {
@@ -23,6 +28,10 @@ public class Stack {
 	@JsonIgnore
 	private Board board;
 	
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="stack")
+	private List<Card> cards;
+	
 
 	public Stack() {
 		super();
@@ -30,9 +39,10 @@ public class Stack {
 
 	public Stack(long id, String name, String color) {
 		super();
-		this.id = id;
-		this.name = name;
-		this.color = color;
+		this.id 	= id;
+		this.name 	= name;
+		this.color 	= color;
+		this.cards 	= new ArrayList<Card>();
 	}
 	
 
@@ -62,9 +72,16 @@ public class Stack {
 	public Board getBoard() {
 		return board;
 	}
-	
 	public void setBoard(Board board) {
 		this.board = board;
+	}
+	
+	
+	public List<Card> getCards() {
+		return cards;
+	}
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
 	}
 	
 	
