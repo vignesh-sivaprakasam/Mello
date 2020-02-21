@@ -12,23 +12,36 @@
                         dialog.remove();
                         loadBoard(id);
                 }
-
-                let editCallback = (id) => {
-                        App.Board.getBoard(id).then((board)=>{
-                                let blView = App.View.List.getBoard(id);
-                                blView.setName(board.name);
-                                blView.setColor(board.color);
-                        });
+                let editCallback = (board) => {
+                        console.log("edit ::",board);
+                        // App.Board.getBoard(id).then((board)=>{
+                                App.Parse.BoardList.update(board.id, board);
+                        // });
+                }
+                let deleteCallback = (id) => {
+                        App.Parse.BoardList.delete(id);
+                }
+                let createCallback = (board) => {
+                        console.log("create ::",board);
+                        // App.Board.getBoard(id).then((board)=>{
+                                App.Parse.BoardList.create(board);
+                                let blView = App.View.List.getBoard(board.id);
+                                blView.bindClickCallback(clickCallback);
+                                blView.bindEditCallback(editCallback);
+                                blView.bindDeleteCallback(deleteCallback);
+                                document.querySelector(".board_list").appendChild(blView.getDom());
+                        // });
                 }
                 App.Board.getAllBoards().then((list)=>{
-                        App.Response.BoardList.load(list);
-                        let listDom         = createListDom(clickCallback, editCallback);
+                        App.Parse.BoardList.load(list);
+                        let listDom         = createListDom(clickCallback, createCallback, editCallback, deleteCallback);
                         dialog.append(listDom);
                         dialog.open();
                 });
         }
 
-        function createListDom(clickCallback, editCallback) {
+
+        function createListDom(clickCallback, createCallback, editCallback, deleteCallback) {
                 let fragment        = App.Utility.getTemplate(container);
                 let listContainer   = fragment.querySelector(".board_list_container");
                 let divC            = fragment.querySelector(".board_list");
@@ -38,12 +51,13 @@
                         let blView = App.View.List.getBoard(id);
                         blView.bindClickCallback(clickCallback);
                         blView.bindEditCallback(editCallback);
+                        blView.bindDeleteCallback(deleteCallback);
                         divC.appendChild(blView.getDom());
                 });
 
                 const createBoard = fragment.querySelector(".create_board");
                 createBoard.addEventListener("click", ()=>{
-                        openBoardCreateDialog();
+                        openBoardCreateDialog(createCallback);
                 });
                 return listContainer;
         }

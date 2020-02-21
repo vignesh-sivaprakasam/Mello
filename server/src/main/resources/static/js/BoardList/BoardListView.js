@@ -18,6 +18,7 @@
                 boardListView.boardDelete.addEventListener("click", (ev) => {
                         boardListView.remove();
                         App.Board.deleteBoard(boardListModel.getID());
+                        boardListView.deleteCallback(boardListModel.getID());
                         ev.stopPropagation();
                 });
         }
@@ -50,6 +51,10 @@
 
                 bindEditCallback(callback){
                         this.editCallback = callback;
+                }
+
+                bindDeleteCallback(callback){
+                        this.deleteCallback = callback;
                 }
 
                 remove(){

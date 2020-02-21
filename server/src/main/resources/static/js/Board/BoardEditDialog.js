@@ -29,7 +29,7 @@
 
                         App.Board.updateBoard(board.id, boardValue).then(response =>{
                                 dialog.remove();
-                                onSuccessCallback(board.id);
+                                onSuccessCallback(response);
                         });
                 });
 

@@ -19,7 +19,7 @@
                 <script src="js/Request/StackRequest.js"></script>
                 <script src="js/Request/CardRequest.js"></script>
 
-                <script src="js/Response/BoardList/BoardListResponse.js"></script>
+                
                 <script src="js/Response/BoardList/BoardListParser.js"></script>
 
                 <script src="js/Dialog/Container.js"></script>
