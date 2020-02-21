@@ -1,50 +1,60 @@
 (function (ctx) {
-
         var Classes 	= ctx.Classes || (ctx.Classes = {});
         var BoardList	= Classes.BoardList || (Classes.BoardList = {});
         const item      = "boardItem";
 
-        function addListener(boardItem, board) {
-                boardItem.div.addEventListener("click", (ev) => {
+        function addListener(boardListView, boardListModel) {
+                boardListView.div.addEventListener("click", (ev) => {
                         console.log("clicked");
-                        boardItem.clickCallback(board.id);
+                        boardListView.clickCallback(boardListModel.getID());
                 });
                 
-                boardItem.edit.addEventListener("click", (ev) => {
+                boardListView.edit.addEventListener("click", (ev) => {
                         console.log("edit Click");
-                        openBoardEditDialog(board);
+                        openBoardEditDialog(boardListModel, boardListView.editCallback);
                         ev.stopPropagation();
                 });
                 
-                boardItem.boardDelete.addEventListener("click", (ev) => {
-                        boardItem.remove();
-                        App.Board.deleteBoard(board.id);
+                boardListView.boardDelete.addEventListener("click", (ev) => {
+                        boardListView.remove();
+                        App.Board.deleteBoard(boardListModel.getID());
                         ev.stopPropagation();
                 });
         }
-        
-        class BoardItem {
-                constructor(board){
+
+        class BoardListView {
+                constructor(boardListModel){
                         this.div                = App.Utility.getTemplate(item).querySelector(".board_item");
                         this.name               = this.div.querySelector(".board_name");
                         this.edit               = this.div.querySelector(".board_edit");
                         this.boardDelete        = this.div.querySelector(".board_delete");
-                        this.name.textContent   = board.name;
-                        addListener(this, board);
+                        this.setName(boardListModel.getName());
+                        addListener(this, boardListModel);
                 }
 
                 getDom(){
                         return this.div;
+                }
+                
+                setName(name){
+                        this.name.textContent = name;
+                }
+
+                setColor(color){
+
                 }
 
                 bindClickCallback(callback){
                         this.clickCallback = callback;
                 }
 
+                bindEditCallback(callback){
+                        this.editCallback = callback;
+                }
+
                 remove(){
                         this.div.remove();
                 }
         }
-
-        BoardList.BoardItem = BoardItem;
+        BoardList.View = BoardListView;
 })(this);

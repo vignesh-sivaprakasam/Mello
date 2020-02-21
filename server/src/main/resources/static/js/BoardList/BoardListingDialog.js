@@ -8,36 +8,44 @@
                 let y       = (window.innerHeight / 2) - (height / 2);
                 var dialog  = new Classes.Dialog.NormalDialog(x, y, width, height, true);
 
-                let callback = (id)=>{
+                let clickCallback = (id)=>{
                         dialog.remove();
                         loadBoard(id);
                 }
+
+                let editCallback = (id) => {
+                        App.Board.getBoard(id).then((board)=>{
+                                let blView = App.View.List.getBoard(id);
+                                blView.setName(board.name);
+                                blView.setColor(board.color);
+                        });
+                }
                 App.Board.getAllBoards().then((list)=>{
-                        let listDom         = createListDom(list, callback);
+                        App.Response.BoardList.load(list);
+                        let listDom         = createListDom(clickCallback, editCallback);
                         dialog.append(listDom);
                         dialog.open();
                 });
         }
 
-        function createListDom(list, callback) {
+        function createListDom(clickCallback, editCallback) {
                 let fragment        = App.Utility.getTemplate(container);
                 let listContainer   = fragment.querySelector(".board_list_container");
                 let divC            = fragment.querySelector(".board_list");
-                list.forEach( board => {
-                        let div = createItem(board, callback);
-                        divC.appendChild(div);
+
+                let order = App.Data.List.order;
+                order.forEach((id)=>{
+                        let blView = App.View.List.getBoard(id);
+                        blView.bindClickCallback(clickCallback);
+                        blView.bindEditCallback(editCallback);
+                        divC.appendChild(blView.getDom());
                 });
+
                 const createBoard = fragment.querySelector(".create_board");
                 createBoard.addEventListener("click", ()=>{
                         openBoardCreateDialog();
                 });
                 return listContainer;
-        }
-
-        function createItem(board, callback) {
-                let boardItem = new Classes.BoardList.BoardItem(board);
-                boardItem.bindClickCallback(callback);
-                return boardItem.getDom();
         }
 
         ctx.openBoardListing = openBoardListing;

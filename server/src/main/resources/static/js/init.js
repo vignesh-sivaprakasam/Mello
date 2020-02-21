@@ -10,12 +10,12 @@ openBoardListing(loadBoard);
 
 const boardName = document.querySelector(".boardName");
 
-App.View = {};
-var View = App.View;
+App.View    = App.View || (App.View = {});
+var View    = App.View;
 App.View.getBoard = (id) => {
         return App.View[id];
 }
-App.Data = {};
+App.Data = App.Data || (App.Data = {});
 var Data = App.Data;
 App.Data.getBoard = (id) =>{
         return App.Data[id];
