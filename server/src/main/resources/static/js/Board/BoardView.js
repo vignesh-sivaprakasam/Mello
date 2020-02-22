@@ -41,6 +41,9 @@
                         this.stacks.set(stackID, stackView);
                         this.stackHolder.appendChild(stackView.getDom());
                 }
+                getStack(stackID){
+                        return this.stacks.get(stackID);
+                }
                 deleteStack(stackID){
                         let stackView = this.stacks.get(stackID);
                         stackView.remove();

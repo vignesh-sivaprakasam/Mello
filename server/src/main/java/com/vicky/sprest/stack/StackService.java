@@ -15,8 +15,8 @@ public class StackService {
 		return stackRepo.findByBoardId(boardID); // variable name in Stack class
 	}
 	
-	public void createStack(Stack stack) {
-		stackRepo.save(stack);
+	public Stack createStack(Stack stack) {
+		return stackRepo.save(stack);
 	}
 	
 	public Stack getStack(long stackID) {
@@ -27,8 +27,7 @@ public class StackService {
 		stackRepo.deleteById(stackID);
 	}
 
-	public void updateStack(Stack stack) {
-		stackRepo.save(stack);
-		
+	public Stack updateStack(Stack stack) {
+		return stackRepo.save(stack);
 	}
 }

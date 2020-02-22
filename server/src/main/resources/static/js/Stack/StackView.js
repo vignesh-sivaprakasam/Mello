@@ -22,14 +22,19 @@
                 const deleteStack = dom.querySelector(".delete");
                 deleteStack.addEventListener("click", () => {
                         let boardID = App.State.getActiveBoardID();
-                        App.Stack.deleteStack(boardID, stackModel.getID());
+                        App.Stack.deleteStack(boardID, stackModel.getID()).then((resp)=>{
+                                App.Parse.Stack.delete(boardID, stackModel.getID());
+                        });
                         di.remove();
                 });
 
                 const editStack = dom.querySelector(".edit");
                 editStack.addEventListener("click", (ev) => {
                         console.log("edit stack click");
-                        createStackEditDialog(editStack, stackView, stackModel);
+                        const stackEditCallback = (stack) =>{
+                                console.log("stackView edit ", stack);
+                        }
+                        createStackEditDialog(editStack, stackModel, stackEditCallback);
                         di.remove();
                 });
         }
