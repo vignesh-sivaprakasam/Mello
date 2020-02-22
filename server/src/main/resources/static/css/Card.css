@@ -1,0 +1,15 @@
+.card {
+        border-radius: 10px;
+        background-color: white;
+        padding: 20px;
+}
+.card_title {
+        font-weight: 600;
+}
+.card_description {
+        display           : -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow          : hidden;
+        text-overflow     : ellipsis;
+}

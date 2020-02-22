@@ -24,6 +24,10 @@
 .card_holder {
         flex: 1;
 }
+.card_holder > * {
+        margin: 10px;
+}
+
 .stack_name{
         flex: 1 1 auto;
 }
