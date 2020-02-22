@@ -21,6 +21,8 @@
 
                 
                 <script src="js/Response/BoardList/BoardListParser.js"></script>
+                <script src="js/Response/Board/BoardParser.js"></script>
+                <script src="js/Response/Stack/StackParser.js"></script>
 
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>
