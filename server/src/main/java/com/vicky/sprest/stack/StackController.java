@@ -28,11 +28,11 @@ public class StackController {
 	}
 	
 	@PostMapping("/stacks")
-	public void createStack(@PathVariable("boardID") long boardID, @RequestBody Stack stack) {
+	public Stack createStack(@PathVariable("boardID") long boardID, @RequestBody Stack stack) {
 		Board board = new Board();
 		board.setId(boardID);
 		stack.setBoard(board);
-		stackService.createStack(stack);
+		return stackService.createStack(stack);
 	}
 	
 	
@@ -47,11 +47,11 @@ public class StackController {
 	}
 	
 	@PutMapping("/stacks/{stackID}")
-	public void updateStack(@PathVariable("boardID") long boardID, @PathVariable("stackID") long stackID, @RequestBody Stack stack) {
+	public Stack updateStack(@PathVariable("boardID") long boardID, @PathVariable("stackID") long stackID, @RequestBody Stack stack) {
 		System.out.println(" stack : "+ stackID+"boardID : "+boardID);
 		stack.setBoard(new Board(boardID, "", ""));
 		stack.setId(stackID);
-		stackService.updateStack(stack);
+		return stackService.updateStack(stack);
 	}
 	
 }

@@ -27,10 +27,6 @@
                         
                         const boardContainer = document.querySelector(".boardContainer");
                         boardContainer.appendChild(boardView.getDom());
-                        // const stacks = boardDetails.stacks;
-                        // stacks.forEach((stack) => {
-                        //         // App.Parse.Stack.load(boardID, stack);
-                        // });
                 }
         }
 

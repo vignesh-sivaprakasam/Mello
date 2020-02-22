@@ -24,7 +24,7 @@
                         return new Promise((resolve, reject)=>{
                                 axios.post(boardUrl+"/"+boardID+stacksUrl, stack).then((response)=>{
                                         console.log("Create Board response : ", response);
-                                        resolve(response);
+                                        resolve(response.data);
                                 });
                         });
                 },
@@ -32,7 +32,7 @@
                         return new Promise((resolve, reject)=>{
                                 axios.put(boardUrl+"/"+boardID+stacksUrl+"/"+stackID, stack).then((response) => {
                                         console.log("Update Board response : ", response);
-                                        resolve(response);
+                                        resolve(response.data);
                                 });
                         });
                 },
@@ -40,7 +40,7 @@
                         return new Promise((resolve, reject)=>{
                                 axios.delete(boardUrl+"/"+boardID+stacksUrl+"/"+stackID).then(response => {
                                         console.log("Delete Board response : ", response);
-                                        resolve(response);
+                                        resolve(response.data);
                                 });
                         });
                 }

@@ -33,7 +33,7 @@
                 return dom;
         }
 
-        function createStackEditDialog(editStack, stackView, stackModel) {
+        function createStackEditDialog(editStack, stackModel, stackEditCallback) {
                 const rect = editStack.getBoundingClientRect();
                 const colorCompCallback = (colorComp)=>{
                         colorComp.setActive(stackModel.getColor());
@@ -42,7 +42,8 @@
                 let dom = openDialog(rect.x, rect.y, 400, 500, colorCompCallback,  (stackValue)=>{
                         let boardID = App.State.getActiveBoardID();
                         App.Stack.updateStack(boardID, stackModel.getID(), stackValue).then((resp)=>{
-                                stackView.setColor(stackValue.color);
+                                stackEditCallback(resp);
+                                App.Parse.Stack.update(boardID, resp.id, resp);
                         });
                 });
 
@@ -58,6 +59,7 @@
                         let boardID = App.State.getActiveBoardID();
                         App.Stack.createStack(boardID, stackValue).then((resp)=>{
                                 // stackView.setColor(stackValue.color);
+                                App.Parse.Stack.create(boardID, resp.id, resp);
                         });
                 });
                 dom.querySelector(".edit_header > .text_center").textContent = "Stack Create Dialog";
