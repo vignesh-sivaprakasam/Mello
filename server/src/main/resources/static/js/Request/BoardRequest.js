@@ -25,7 +25,7 @@
                         return new Promise((resolve, reject)=>{
                                 axios.post(boardUrl, board).then((response)=>{
                                         console.log("Create Board response : ", response);
-                                        resolve(response);
+                                        resolve(response.data);
                                 });
                         });
                 },
@@ -33,7 +33,7 @@
                         return new Promise((resolve, reject)=>{
                                 axios.put(boardUrl+"/"+id, board).then((response) => {
                                         console.log("Update Board response : ", response);
-                                        resolve(response);
+                                        resolve(response.data);
                                 });
                         });
                 },

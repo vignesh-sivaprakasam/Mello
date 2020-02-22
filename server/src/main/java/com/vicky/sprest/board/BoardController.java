@@ -32,13 +32,13 @@ public class BoardController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/boards")
-	public void createBoard(@RequestBody Board board) {
-		boardService.createBoard(board);
+	public Board createBoard(@RequestBody Board board) {
+		return boardService.createBoard(board);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/boards/{id}")
-	public void updateBoard(@RequestBody Board board, @PathVariable("id") long id) {
-		boardService.updateBoard(id, board);
+	public Board updateBoard(@RequestBody Board board, @PathVariable("id") long id) {
+		return boardService.updateBoard(id, board);
 	}
 	
 	@RequestMapping(method=RequestMethod.PATCH, value="/boards/{id}/name")

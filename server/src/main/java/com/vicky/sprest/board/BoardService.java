@@ -24,13 +24,13 @@ public class BoardService {
 		return boardRepo.findById(id).get();
 	}
 	
-	public void createBoard(Board board) {
-		boardRepo.save(board);
+	public Board createBoard(Board board) {
+		return boardRepo.save(board);
 	}
 	
-	public void updateBoard(long id, Board board) {
+	public Board updateBoard(long id, Board board) {
 		board.setId(id);
-		boardRepo.save(board);
+		return boardRepo.save(board);
 	}
 	
 	public void deleteBoard(long id) {

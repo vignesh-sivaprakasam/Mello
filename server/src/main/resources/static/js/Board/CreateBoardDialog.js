@@ -1,17 +1,17 @@
 (function (ctx) {
         const editDialogTemplate = "boardEditDialog";
 
-        function openBoardCreateDialog() {
+        function openBoardCreateDialog(createCallback) {
                 const width   = 400;
                 const height  = 450;
                 const x       = (window.innerWidth / 2) - (width / 2);
                 const y       = (window.innerHeight / 2) - (height / 2);
                 let dialog    = new Classes.Dialog.NormalDialog(x, y, width, height, true);
-                let container = createDialog(dialog);
+                let container = createDialog(dialog, createCallback);
                 dialog.append(container);
         }
 
-        function createDialog(dialog) {
+        function createDialog(dialog, createCallback) {
                 let fragment        = App.Utility.getTemplate(editDialogTemplate);
                 const name          = fragment.querySelector(".board_name_value");
                 
@@ -28,6 +28,7 @@
                         boardValue.color  = colorComp.getActive();
                         App.Board.createBoard(boardValue).then(response => {
                                 dialog.remove();
+                                createCallback(response);
                         });
                 });
 
