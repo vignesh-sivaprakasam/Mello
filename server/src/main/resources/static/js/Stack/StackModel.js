@@ -7,6 +7,7 @@
                         this.id       = id;
                         this.name     = name;
                         this.color    = color;
+                        this.cards    = new Map();
                 }
 
                 getID(){
@@ -25,6 +26,13 @@
                 }
                 setColor(color){
                         this.color = color;
+                }
+
+                addCard(cardID, card){
+                        this.cards.set(cardID, card);
+                }
+                getCard(cardID){
+                        return this.cards.get(cardID);
                 }
         }
 

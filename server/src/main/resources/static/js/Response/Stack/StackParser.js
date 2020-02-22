@@ -19,6 +19,8 @@
                         
                         boardView.addStack(stack.id, stackView);
 
+                        const cards = stack.cards;
+                        App.Parse.Card.load(boardID, stackID, cards);
                 },
                 update : (boardID, stackID, stack)=>{
                         const boardModel = App.Data.getBoard(boardID);

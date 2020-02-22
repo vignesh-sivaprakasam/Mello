@@ -39,6 +39,8 @@
                 });
         }
 
+        
+
         function addListener(stackView, stackModel) {
                 let name = stackView.stackName;
                 name.addEventListener("keydown", (ev)=>{
@@ -65,7 +67,7 @@
 
                 let addCard = stackView.addCardDom;
                 addCard.addEventListener("click", ()=>{
-                        
+                        createCard();
                 });
         }
         
@@ -75,7 +77,10 @@
                         this.stackHeader    = this.dom.querySelector(".stack_header");
                         this.stackName      = this.dom.querySelector(".stack_name");
                         this.stackMenu      = this.dom.querySelector(".stack_menu");
+                        this.cardHolder     = this.dom.querySelector(".card_holder");
                         this.addCardDom     = this.dom.querySelector(".createCard");
+
+                        this.cards          = new Map();
                         addListener(this, stackModel);
                 }
                 getDom(){
@@ -90,9 +95,17 @@
                         this.stackHeader.style.backgroundColor = color;
                 }
 
-                remove(){
-                        this.dom.remove();
+                addCard(cardID, cardView){
+                        this.cards.set(cardID, cardView);
+                        this.cardHolder.appendChild(cardView.getDom());
                 }
+
+                deleteCard(cardID){
+                        const cardView = this.cards.get(cardID);
+                        this.cards.delete(cardID);
+                        cardView.remove();
+                }
+
         }
 
         Stack.View = StackView;
