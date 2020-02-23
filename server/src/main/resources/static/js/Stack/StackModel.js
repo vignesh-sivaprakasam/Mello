@@ -31,6 +31,10 @@
                 addCard(cardID, card){
                         this.cards.set(cardID, card);
                 }
+
+                deleteCard(cardID){
+                        this.cards.delete(cardID);
+                }
                 getCard(cardID){
                         return this.cards.get(cardID);
                 }

@@ -99,7 +99,9 @@
                         this.cards.set(cardID, cardView);
                         this.cardHolder.appendChild(cardView.getDom());
                 }
-
+                getCard(cardID){
+                        return this.cards.get(cardID);
+                }
                 deleteCard(cardID){
                         const cardView = this.cards.get(cardID);
                         this.cards.delete(cardID);
