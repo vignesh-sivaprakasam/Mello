@@ -22,7 +22,7 @@ public class StackController {
 	private StackService stackService;
 
 	@GetMapping("/stacks")
-	public List<Stack> getAllStacks(@PathVariable("boardID") long boardID){
+	public List<StackResponse> getAllStacks(@PathVariable("boardID") long boardID){
 		System.out.println(" getStacks ");
 		return stackService.getAllStacks(boardID);
 	}

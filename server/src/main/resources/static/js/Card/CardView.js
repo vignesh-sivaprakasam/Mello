@@ -12,6 +12,31 @@
                 return cloneFragment.querySelector(".card");
         }
 
+        function createCardDialog(stackID) {
+                const dom   = createCard();
+                const title           = dom.querySelector(".card_title");
+                title.contentEditable   = true;
+                setTimeout(()=>{title.focus()}, 100);
+                title.addEventListener("keydown", (ev) => {
+                        if(ev.keyCode == 13){
+                                const boardID = App.State.getActiveBoardID();
+
+                                App.Card.createCard(boardID, stackID, {
+                                        title : title.textContent
+                                }).then((card)=>{
+                                        console.log("card create : :",card);
+                                        App.Parse.Card.create(boardID, stackID, card);
+                                        dom.remove();
+                                });
+                        }
+
+                        if(ev.keyCode == 27){
+                                dom.remove();
+                        }
+                });
+                return dom;
+        }
+
         function createDropDown(stackID, cardModel, deleteCallback) {
                 const dom = App.Utility.getTemplate(cardDDtemplate);
                 dom.querySelector(".delete").addEventListener("click", ()=>{
@@ -34,7 +59,7 @@
                         const rect = cardView.menu.getBoundingClientRect();
                         const dialog = new Classes.Dialog.NormalDialog(rect.x, rect.y + rect.height, 150, 100);
                         const dropdown = createDropDown(stackID, cardModel, () => {
-                                dialog.remove();
+                                dialog.remove();''
                         });
                         dialog.append(dropdown);
                 });
@@ -69,4 +94,5 @@
         }
 
         Card.View = CardView;
+        Card.View.createCard = createCardDialog;
 })(this);
