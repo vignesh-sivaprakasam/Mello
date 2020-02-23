@@ -15,8 +15,8 @@ public class CardService {
 		return cardRepo.findByStackId(stackID);
 	}
 	
-	public void createCard(Card card) {
-		cardRepo.save(card);
+	public Card createCard(Card card) {
+		return cardRepo.save(card);
 	}
 
 	public Card getCard(long cardID) {
@@ -27,7 +27,7 @@ public class CardService {
 		cardRepo.deleteById(cardID);
 	}
 	
-	public void updateCard(Card card) {
-		cardRepo.save(card);
+	public Card updateCard(Card card) {
+		return cardRepo.save(card);
 	}
 }

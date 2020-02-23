@@ -2,8 +2,9 @@
         --primary_color:#00aaff;
 }
 body{
-        margin: 0;
-        height: 100vh;
+        margin     : 0;
+        height     : 100vh;
+        font-family: Avenir Next,Segoe UI,Helvetica,Arial,sans-serif;
 }
 div:focus, input:focus{
         outline: none;
@@ -92,4 +93,24 @@ div:focus, input:focus{
 .color_item.active > .color_holder {
         height    : 30px;
         width     : 30px;
+}
+
+.close{
+        height : inherit;
+        width  : 22px;
+        padding: 5px;
+}
+.close::before, .close::after{
+        content   :'';
+        height    : 2px;
+        width     : 14px;
+        background: #8a9499;
+        top       : 45%;
+        position  : absolute;
+}
+.close::before{
+        transform: rotate(45deg);
+}
+.close::after{
+        transform: rotate(-45deg);
 }

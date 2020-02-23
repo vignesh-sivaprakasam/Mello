@@ -8,10 +8,11 @@
                 <link rel="stylesheet" href="/css/Board.css">
                 <link rel="stylesheet" href="/css/Stack.css">
                 <link rel="stylesheet" href="/css/Card.css">
+                <link rel="stylesheet" href="/css/ExpandedCard.css">
                 <link rel="stylesheet" href="/css/Menu.css">
                 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-                <script src="js/GetTemplate.js"></script>
+                <script src="js/Utility.js"></script>
                 <script src="js/ColorComponent.js"></script>
 
                 <%@ include file="./State.jspf" %>
@@ -42,6 +43,7 @@
                 <script src="js/Stack/StackView.js"></script>
                 <script src="js/Stack/StackModel.js"></script>
 
+                <script src="js/Card/ExpandedCardView.js"></script>
                 <script src="js/Card/CardView.js"></script>
                 <script src="js/Card/CardModel.js"></script>
 
@@ -56,6 +58,8 @@
                 <%@ include file="../html/Stack/StackViewDropDown.html" %>
                 <%@ include file="../html/Stack/StackView.html" %>
                 <%@ include file="../html/Card/CardView.html" %>
+                <%@ include file="../html/Card/ExpandedCardView.html" %>
+                <%@ include file="../html/Card/CardViewDropDown.html" %>
                 <%@ include file="../html/ColorComponent.html" %>
                 <script src="/js/BoardList/BoardListingDialog.js"></script>
                 <script src="/js/init.js"></script>

@@ -29,9 +29,9 @@ public class CardController {
 	}
 	
 	@PostMapping("/cards")
-	public void createCard(@PathVariable("stackID")long stackID, @RequestBody Card card) {
+	public Card createCard(@PathVariable("stackID")long stackID, @RequestBody Card card) {
 		card.setStack(new Stack(stackID, "", ""));
-		cardService.createCard(card);
+		return cardService.createCard(card);
 	}
 	
 	@GetMapping(value="/cards/{cardID}")
@@ -45,10 +45,10 @@ public class CardController {
 	}
 	
 	@PutMapping("/cards/{cardID}")
-	public void updateStack(@PathVariable("stackID")long stackID, @PathVariable("cardID")long cardID, @RequestBody Card card) {
+	public Card updateStack(@PathVariable("stackID")long stackID, @PathVariable("cardID")long cardID, @RequestBody Card card) {
 		card.setStack(new Stack(stackID, "", ""));
 		card.setId(cardID);
-		cardService.updateCard(card);
+		return cardService.updateCard(card);
 	}
 	
 }
