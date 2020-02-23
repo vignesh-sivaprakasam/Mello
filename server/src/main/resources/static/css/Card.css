@@ -9,6 +9,7 @@
 }
 .card_title {
         font-weight: 600;
+        min-height: 22px;
 }
 .card_description {
         display           : -webkit-box;

@@ -67,7 +67,8 @@
 
                 let addCard = stackView.addCardDom;
                 addCard.addEventListener("click", ()=>{
-                        createCard();
+                        const dom = Classes.Card.View.createCard(stackModel.getID());
+                        stackView.getCardHolder().appendChild(dom);
                 });
         }
         
@@ -85,6 +86,10 @@
                 }
                 getDom(){
                         return this.dom;
+                }
+
+                getCardHolder(){
+                        return this.cardHolder;
                 }
 
                 setName(name){

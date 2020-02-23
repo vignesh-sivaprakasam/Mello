@@ -1,5 +1,6 @@
 package com.vicky.sprest.stack;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,13 @@ public class StackService {
 	@Autowired
 	private StackRepository stackRepo;
 	
-	public List<Stack> getAllStacks(long boardID){
-		return stackRepo.findByBoardId(boardID); // variable name in Stack class
+	public List<StackResponse> getAllStacks(long boardID){
+		List<Stack> list = stackRepo.findByBoardId(boardID);
+		List<StackResponse> stackResponseList = new ArrayList<StackResponse>();
+		list.forEach((Stack stack)->{
+			stackResponseList.add(new StackResponse(stack, new ArrayList<>()));
+		});
+		return stackResponseList; // variable name in Stack class
 	}
 	
 	public Stack createStack(Stack stack) {
