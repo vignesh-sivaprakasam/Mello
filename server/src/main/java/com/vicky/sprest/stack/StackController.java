@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vicky.sprest.board.Board;
+import com.vicky.sprest.card.CardOrder;
 
 @RestController
 @RequestMapping("/boards/{boardID}")
@@ -32,6 +33,7 @@ public class StackController {
 		Board board = new Board();
 		board.setId(boardID);
 		stack.setBoard(board);
+		stack.setCardOrder(new CardOrder(stack, "[]"));
 		return stackService.createStack(stack);
 	}
 	

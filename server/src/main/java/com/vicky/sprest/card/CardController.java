@@ -40,8 +40,8 @@ public class CardController {
 	}
 	
 	@DeleteMapping("/cards/{cardID}")
-	public void deleteCard(@PathVariable("cardID")long cardID) {
-		cardService.deleteCard(cardID);
+	public void deleteCard(@PathVariable("stackID")long stackID, @PathVariable("cardID")long cardID) {
+		cardService.deleteCard(stackID, cardID);
 	}
 	
 	@PutMapping("/cards/{cardID}")

@@ -10,6 +10,7 @@
                 create : (boardID, stackID, stack) => {
                         const boardModel = App.Data.getBoard(boardID);
                         const stackModel = new Classes.Stack.Model(stack.id, stack.name, stack.color);
+                        // stackModel.setOrder(JSON.parse(stack.cardOrder.cardOrder));
                         boardModel.addStack(stack.id, stackModel);
 
                         const boardView = App.View.getBoard(boardID);
