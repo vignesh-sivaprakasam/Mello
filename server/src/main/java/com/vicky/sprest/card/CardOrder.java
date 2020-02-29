@@ -57,24 +57,51 @@ public class CardOrder {
 	
 	public void deleteCard(long cardID) {
 		JSONArray jsonArr = new JSONArray(this.cardOrder);
-		int index = 0;
+		
+		List<Object> list = jsonArr.toList();
+		list.remove(cardID);
+		
+		this.cardOrder = list.toString();
+	}
+	
+	public void insertCard(int position, long cardID) {
+		JSONArray jsonArr = new JSONArray(this.cardOrder);
+		List<Object> list = jsonArr.toList();
+		list.add(position, cardID);
+		
+		this.cardOrder = list.toString();
+	}
+	
+	public void removeCard(int index, Long cardID) {
+		JSONArray jsonArr = new JSONArray(this.cardOrder);
+		jsonArr.remove(index);
+		
+		this.cardOrder = jsonArr.toString();
+	}
+	
+	public int getIndex(long cardID) {
+		JSONArray jsonArr = new JSONArray(this.cardOrder);
+		
 		for(int i = 0 ; i < jsonArr.length(); i++) {
 			if(jsonArr.getLong(i) == cardID) {
-				index = i;
-				break;
+				return i;
 			}
 		}
-		jsonArr.remove(index);
-		this.cardOrder = jsonArr.toString();
+		return -1;
 	}
 	
 	
 	public static void main(String[] args) {
+		JSONArray arr = new JSONArray("[1, 2, 3]");
+		System.out.println("2 :: "+arr.get(2));
+		List<Object> lis = arr.toList();
 		
-		List<Long> arr = new LinkedList();
-		arr.add(1l);
-		arr.add(2l);
-		System.out.println(" "+arr.toString());
+		lis.remove(2);
+		System.out.println(" :: "+lis.toString());
+		System.out.println(" :: "+arr.toString());
+		
+	
+		
 	}
 	
 }

@@ -2,10 +2,23 @@
         const Parse = App.Parse || (App.Parse = {});
 
         const Card = {
-                load : (boardID, stackID, cards) => {
-                        cards.forEach( (card) => {
-                                Card.create(boardID, stackID, card);
-                        });
+                load : (boardID, stackID, cardOrder, cards) => {
+                        for(let i = 0 ; i < cardOrder.length; i++){
+                                for(let j = 0 ; j < cards.length; j++){
+                                        const card = cards[j];
+                                        if(card.id == cardOrder[i]){
+                                                Card.create(boardID, stackID, card);
+                                                break;
+                                        }
+                                }
+                        }
+                        // cards.forEach( (card) => {
+                        //         Card.create(boardID, stackID, card);
+                        // });
+                        // cardOrder.forEach((cardID)=>{
+                        //         Card.create(boardID, stackID, cards);
+                        // });
+
                 },
                 create : (boardID, stackID, card) => {
                         const boardModel = App.Data.getBoard(boardID);

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vicky.sprest.stack.Stack;
+
 @Service
 public class CardService {
 	
@@ -40,5 +42,24 @@ public class CardService {
 	
 	public Card updateCard(Card card) {
 		return cardRepo.save(card);
+	}
+	
+	public void moveCard(long fromStackID, long toStackID, long cardID, int pos) {
+		CardOrder fromCardOrder = cardOrderRepo.findByStackId(fromStackID);
+		CardOrder toCardOrder   = cardOrderRepo.findByStackId(toStackID);
+		
+		int indexToBeDeleted = fromCardOrder.getIndex(cardID);
+		
+		fromCardOrder.removeCard(indexToBeDeleted, cardID);
+		toCardOrder.insertCard(pos, cardID);
+		
+		if(fromStackID != toStackID) {
+			Card card = cardRepo.findById(cardID).get();
+			card.setStack(new Stack(toStackID, "", ""));
+			cardRepo.save(card);
+		}
+		cardOrderRepo.save(fromCardOrder);
+		cardOrderRepo.save(toCardOrder);
+		
 	}
 }
