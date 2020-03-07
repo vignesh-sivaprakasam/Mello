@@ -8,7 +8,8 @@
                         this.dragCardID  = null;
                         this.dropStackID = null;
                         this.dropCardID  = null;
-                        this.position    = null;
+                        this.dragPosition = null;
+                        this.dropPosition    = null;
 
                         this.direction   = null;
                 }
@@ -41,12 +42,18 @@
                         this.dropStackID = stackID;
                 }
 
-                getPosition(){
-                        return this.position;
+                getDropPosition(){
+                        return this.dropPosition;
+                }
+                setDropPosition(dropPosition){
+                        this.dropPosition = dropPosition;
                 }
 
-                setPosition(position){
-                        this.position = position;
+                getDragPosition(){
+                        return this.dragPosition;
+                }
+                setDragPosition(dragPosition){
+                        this.dragPosition = dragPosition;
                 }
 
                 getDirection(){
