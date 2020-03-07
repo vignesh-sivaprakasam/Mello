@@ -26,7 +26,7 @@
 
                         const cardModel  = new Classes.Card.Model(card.id, card.title, card.description);
                         stackModel.addCard(card.id, cardModel);
-
+                        boardModel.addInCardToStack(card.id, stackID);
 
                         const boardView = App.View.getBoard(boardID);
                         const stackView = boardView.getStack(stackID);

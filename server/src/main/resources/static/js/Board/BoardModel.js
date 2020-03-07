@@ -3,10 +3,11 @@
         var Board     = Classes.Board || (Classes.Board = {});
         class BoardModel {
                 constructor(id, name, color){
-                        this.id       = id;
-                        this.name     = name;
-                        this.color    = color;
-                        this.stacks   = new Map();
+                        this.id          = id;
+                        this.name        = name;
+                        this.color       = color;
+                        this.stacks      = new Map();
+                        this.cardToStack = new Map();
                 }
 
                 getID(){
@@ -35,6 +36,14 @@
                 }
                 deleteStack(stackID){
                         this.stacks.delete(stackID);
+                }
+
+                addInCardToStack(cardID, stackID){
+                        this.cardToStack.set(cardID, stackID);
+                }
+
+                getStackIdOfCard(cardID){
+                        return this.cardToStack.get(cardID);
                 }
         }
 

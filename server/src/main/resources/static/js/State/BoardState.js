@@ -6,6 +6,7 @@
                 constructor(){
                         this.map            = new Map();
                         this.activeStack    = null;
+                        this.dragAndDrop    = new State.DragAndDropState();
                 }
 
                 getActiveStackState(){
@@ -17,6 +18,10 @@
                 }
                 setStackState(stackID, stackState){
                         this.map.set(stackID, stackState);
+                }
+
+                getDragAndDropState(){
+                        return this.dragAndDrop;
                 }
 
                 getActiveStack(){

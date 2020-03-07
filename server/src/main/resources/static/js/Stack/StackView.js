@@ -70,6 +70,14 @@
                         const dom = Classes.Card.View.createCard(stackModel.getID());
                         stackView.getCardHolder().appendChild(dom);
                 });
+
+                const cardHolder = stackView.cardHolder;
+                cardHolder.addEventListener("dragover",(ev) => {
+                        ev.preventDefault();
+                });
+                cardHolder.addEventListener("drop", (ev) => {
+                        console.log("stack drop");
+                });
         }
         
         class StackView {
