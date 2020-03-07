@@ -23,6 +23,7 @@
 }
 .card_holder {
         flex: 1;
+        overflow: scroll;
 }
 .card_holder > * {
         margin: 10px;

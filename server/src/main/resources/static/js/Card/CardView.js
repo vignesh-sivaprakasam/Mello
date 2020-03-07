@@ -59,9 +59,109 @@
                         const rect = cardView.menu.getBoundingClientRect();
                         const dialog = new Classes.Dialog.NormalDialog(rect.x, rect.y + rect.height, 150, 100);
                         const dropdown = createDropDown(stackID, cardModel, () => {
-                                dialog.remove();''
+                                dialog.remove();
                         });
                         dialog.append(dropdown);
+                });
+                cardView.getDom().addEventListener("dragstart", (ev)=>{
+                        console.log("drag start");
+                        const dragCardID = cardModel.getID();
+                        const dropCardID = cardModel.getID();
+
+                        const boardID     = App.State.getActiveBoardID();
+                        const boardModel  = App.Data.getBoard(boardID);
+                        const dragStackID = boardModel.getStackIdOfCard(dragCardID);
+
+                        const boardState       = App.State.getActiveBoardState();
+                        const dragAndDropState = boardState.getDragAndDropState();
+                        dragAndDropState.setDragStackID(dragStackID);
+                        dragAndDropState.setDragCardID(dragCardID);
+                        dragAndDropState.setDropCardID(dragStackID);
+                        dragAndDropState.setDropCardID(dropCardID);
+
+
+                        const dragStack    = boardModel.getStack(dragStackID);
+                        const dragPosition = dragStack.getCardPosition(dragCardID);
+                        dragAndDropState.setDragPosition(dragPosition);
+                });
+                cardView.getDom().addEventListener("dragenter", (ev)=>{
+                        ev.preventDefault();
+                        const boardState       = App.State.getActiveBoardState();
+                        const dragAndDropState = boardState.getDragAndDropState();
+
+                        const dragCardID      = dragAndDropState.getDragCardID();
+                        let dropCardID        = dragAndDropState.getDropCardID();
+                        if(dropCardID != cardModel.getID()){
+                                dropCardID        = cardModel.getID();
+                                dragAndDropState.setDropCardID(dropCardID);
+
+                                const dragStackID = dragAndDropState.getDragStackID();
+                                const boardID     = App.State.getActiveBoardID();
+                                if(dragCardID != dropCardID){
+                                        const boardModel   = App.Data.getBoard(boardID);
+                                        const dropStackID  = boardModel.getStackIdOfCard(dropCardID);
+                                        const dropStack    = boardModel.getStack(dropStackID);
+                                        const dropPosition = dropStack.getCardPosition(dropCardID);
+
+                                        dragAndDropState.setDropStackID(dropStackID);
+                                        dragAndDropState.setDropPosition(dropPosition);
+                                        // dragAndDropState.setDragPosition(dropPosition);
+                                }
+                                const boardView   = App.View.getBoard(boardID);
+                                const dragStack   = boardView.getStack(dragStackID);
+                                const dragCardDom = dragStack.getCard(dragCardID).getDom();
+                                const dragOverDom = cardView.getDom();
+
+                                const cardHolder = dragOverDom.parentElement;
+
+                                if(dragOverDom.nextElementSibling === dragCardDom){
+                                        console.log("up b4:", dragAndDropState.getDirection());
+                                        if(dragAndDropState.getDirection() == null){
+                                                dragAndDropState.setDirection(true);
+                                        } else if(dragAndDropState.getDirection() === false){
+                                                const dropPosition = dragAndDropState.getDropPosition();
+                                                if(dragAndDropState.getDragStackID() === dragAndDropState.getDropStackID()){
+                                                        dragAndDropState.setDropPosition(dropPosition - 1);
+                                                } else {
+                                                        dragAndDropState.setDropPosition(dropPosition);
+                                                }
+                                        }
+                                        cardHolder.insertBefore(dragCardDom, dragOverDom);
+                                } else if(dragCardDom.nextElementSibling === dragOverDom) {
+                                        console.log("down");
+                                        if(dragAndDropState.getDirection() == null){
+                                                dragAndDropState.setDirection(false);
+                                        }
+                                        cardHolder.insertBefore(dragOverDom, dragCardDom);
+                                        if(dragCardID != dropCardID){
+                                                const dropPosition = dragAndDropState.getDropPosition();
+                                                if(dragAndDropState.getDragStackID() === dragAndDropState.getDropStackID()){
+                                                        dragAndDropState.setDropPosition(dropPosition);
+                                                } else {
+                                                        dragAndDropState.setDropPosition(dropPosition + 1);
+                                                }
+                                        }
+                                } else {
+                                        if(dragCardDom != dragOverDom){
+                                                console.log("stack change");
+                                                cardHolder.insertBefore(dragCardDom, dragOverDom);
+                                        }
+                                }
+
+
+                                if(dragAndDropState.getDragPosition() === dragAndDropState.getDropPosition()){
+                                        console.log("same pos");
+                                        dragAndDropState.setDirection(null);
+                                }
+                        }
+                });
+
+                cardView.getDom().addEventListener("drop", (ev)=>{
+                        const boardState       = App.State.getActiveBoardState();
+                        const dragAndDropState = boardState.getDragAndDropState();
+
+                        console.log("dragCard : ", dragAndDropState.getDragCardID(), " dropCardStack : ", dragAndDropState.getDropStackID(), " position L:", dragAndDropState.getDropPosition());
+                        ev.stopPropagation();
                 });
         }
 

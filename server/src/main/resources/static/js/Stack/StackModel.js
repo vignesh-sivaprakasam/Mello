@@ -46,6 +46,9 @@
                 getCard(cardID){
                         return this.cards.get(cardID);
                 }
+                getCardPosition(cardID){
+                        return this.order.indexOf(cardID);
+                }
         }
 
         Stack.Model = StackModel;
