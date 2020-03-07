@@ -1,3 +1,10 @@
+.middleBar{
+        overflow: scroll;
+}
+.boardView{
+        overflow: scroll;
+}
+
 .board{
         display: flex;
         height: 95%;
@@ -14,12 +21,16 @@
         
 }
 .addStack{
-        border-radius   : 20px;
-        background      : white;
-        padding         : 15px;
-        cursor          : pointer;
-        color           : var(--primary_color);
-        font-weight     : 500;
+        border-radius : 20px;
+        background    : white;
+        padding       : 15px;
+        cursor        : pointer;
+        color         : var(--primary_color);
+        font-weight   : 500;
+
+        align-self    : flex-start;
+        /* flex       : 0 0 auto; calculate width automatically and size doesnot increase or decrease */
+        flex          : 0 0 auto;
 }
 
 
@@ -37,6 +48,7 @@
         padding       : 20px;
         flex          : 1;
         background    : #ececec;
+        overflow: scroll;
 }
 .board_item {
         padding       : 10px;
