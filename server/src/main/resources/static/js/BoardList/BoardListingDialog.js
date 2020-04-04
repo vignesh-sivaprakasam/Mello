@@ -15,7 +15,7 @@
                 let editCallback = (board) => {
                         console.log("edit ::",board);
                         // App.Board.getBoard(id).then((board)=>{
-                                App.Parse.BoardList.update(board.id, board);
+                                App.Parse.BoardList.update(board._id, board);
                         // });
                 }
                 let deleteCallback = (id) => {
