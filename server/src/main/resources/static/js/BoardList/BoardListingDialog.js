@@ -15,7 +15,7 @@
                 let editCallback = (board) => {
                         console.log("edit ::",board);
                         // App.Board.getBoard(id).then((board)=>{
-                                App.Parse.BoardList.update(board.id, board);
+                                App.Parse.BoardList.update(board._id, board);
                         // });
                 }
                 let deleteCallback = (id) => {
@@ -25,7 +25,7 @@
                         console.log("create ::",board);
                         // App.Board.getBoard(id).then((board)=>{
                                 App.Parse.BoardList.create(board);
-                                let blView = App.View.List.getBoard(board.id);
+                                let blView = App.View.List.getBoard(board._id);
                                 blView.bindClickCallback(clickCallback);
                                 blView.bindEditCallback(editCallback);
                                 blView.bindDeleteCallback(deleteCallback);

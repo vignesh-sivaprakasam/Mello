@@ -121,6 +121,10 @@
                         cardView.remove();
                 }
 
+                remove(){
+                        this.dom.remove();
+                }
+
         }
 
         Stack.View = StackView;

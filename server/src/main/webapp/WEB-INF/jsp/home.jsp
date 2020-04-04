@@ -21,11 +21,20 @@
                 <script src="js/Request/StackRequest.js"></script>
                 <script src="js/Request/CardRequest.js"></script>
 
+                <script src="js/NodeRequest/NBoardRequest.js"></script>
+                <script src="js/NodeRequest/NStackRequest.js"></script>
+                <script src="js/NodeRequest/NCardRequest.js"></script>
+
 
                 <script src="js/Response/BoardList/BoardListParser.js"></script>
                 <script src="js/Response/Board/BoardParser.js"></script>
                 <script src="js/Response/Stack/StackParser.js"></script>
                 <script src="js/Response/Card/CardParser.js"></script>
+
+                <script src="js/NodeResponse/NBoardListParser.js"></script>
+                <script src="js/NodeResponse/NBoardParser.js"></script>
+                <script src="js/NodeResponse/NStackParser.js"></script>
+                <script src="js/NodeResponse/NCardParser.js"></script>
 
                 <script src="js/Dialog/Container.js"></script>
                 <script src="js/Dialog/NormalDialog.js"></script>

@@ -1,9 +1,9 @@
 
 function loadBoard(id) {
         App.Board.getBoard(id).then(boardDetails => {
-                updateBoardState(boardDetails.id);
+                updateBoardState(boardDetails._id);
                 boardName.textContent = boardDetails.name;
-                App.Parse.Board.load(boardDetails.id, boardDetails);
+                App.Parse.Board.load(boardDetails._id, boardDetails);
                 // parseBoardResponse(boardDetails);
         });
 }

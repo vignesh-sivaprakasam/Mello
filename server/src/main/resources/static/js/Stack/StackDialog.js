@@ -43,7 +43,7 @@
                         let boardID = App.State.getActiveBoardID();
                         App.Stack.updateStack(boardID, stackModel.getID(), stackValue).then((resp)=>{
                                 stackEditCallback(resp);
-                                App.Parse.Stack.update(boardID, resp.id, resp);
+                                App.Parse.Stack.update(boardID, resp._id, resp);
                         });
                 });
 
@@ -59,7 +59,7 @@
                         let boardID = App.State.getActiveBoardID();
                         App.Stack.createStack(boardID, stackValue).then((resp)=>{
                                 // stackView.setColor(stackValue.color);
-                                App.Parse.Stack.create(boardID, resp.id, resp);
+                                App.Parse.Stack.create(boardID, resp._id, resp);
                         });
                 });
                 dom.querySelector(".edit_header > .text_center").textContent = "Stack Create Dialog";
